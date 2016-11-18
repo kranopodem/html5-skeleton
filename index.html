@@ -20,76 +20,7 @@
   </head>
   <body>
       <div class="container">
-<h1>Свойства</h1>
 
-  <div id="props">
-  </div>
-  <a href="#" id="add" onclick="addField()">Добавить поле</a>
-  <script>
-
-var sel = $('.options'),
-opt = $('option:not(:first-child)', sel);
-function review(){
-    var chosen = sel.map(function(i, el){
-        return $(':selected',el);
-    });
-    var teamId = 0;
-    opt.show().prop('disabled', false);
-    chosen.each(function(i, el){
-        teamId = $(el).val();
-        opt.not(el).filter(function(){
-            return $(this).val() == teamId;
-        }).hide().prop('disabled', true);
-    });
-    return false;
-}
-$('#props').on('change','#Tovar_name',review);
-           $('#props').on('change','#Tovar_name', function(){
-              console.log('select');
-                var orange = $(this).find("option:selected").attr('data-type');
-                switch (orange){
-                  case "0":
-                    $(this).parent().next('#change').html('<input type=\"number\" name=\"browser\" value=\"0\" min=\"0\" step=\"1\"><a href="#" class="del">X</a>');
-                    break;
-                  case "1":
-                    $(this).parent().next('#change').html('<input type=\"text\" name=\"browser\" ><a href="#" class="del">X</a>');
-                    break;
-                  case "2":
-                   $(this).parent().next('#change').html('<input type=\"checkbox\" name=\"browser\" ><a href="#" class="del">X</a>');
-                    break;
-                  default :
-                   $(this).parent().next('#change').html('<p>Нет типа свойства</p>');
-                    break;
-                }
-          });
-          var i = 1;
-          function addField() {
-
-            $('#props').prepend('<div id=\"fields\">\
-                <select class=\"options\" name=\"Tovar[name]\" id=\"Tovar_name\">\
-                <option selected=\"true\" disabled=\"disabled\">Выберите свойство</option>\
-                <option data-type=0>DDD</option>\
-                <option data-type=1>fff</option>\
-                <option data-type=2>ggg</option>\
-                </select>\
-                    </div>\
-                    <div id=\"change\" >f</div><br>');
-                      sel = $('.options'),
-                      opt = $('option:not(:first-child)', sel);
-            $('#Tovar_name').change();
-            if(3>i){
-                i++;
-                    }else{
-            $('#add').hide();
-                    }
-          }
-
-          $('html').on('click','.del',function(){
-              $(this).parent().prev('#fields').find('select option:disabled').css('display','block');
-          });
-
-
-  </script>
       </div>
 
   </body>
